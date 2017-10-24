@@ -23,6 +23,23 @@ var allFeeds = [
     }
 ];
 
+// modified to fail
+// var allFeeds = [
+//     {
+//         name: 'Udacity Blog',
+//         : 'http://blog.udacity.com/feed'
+//     }, {
+//         name: 'CSS Tricks',
+//         url: 'http://feeds.feedburner.com/CssTricks'
+//     }, {
+//         name: 'HTML5 Rocks',
+//         url: 'http://feeds.feedburner.com/html5rocks'
+//     }, {
+//         name: 'Linear Digressions',
+//         url: 'http://feeds.feedburner.com/udacity-linear-digressions'
+//     }
+// ];
+
 /* This function starts up our application. The Google Feed
  * Reader API is loaded asynchonously and will then call this
  * function when the API is loaded.
