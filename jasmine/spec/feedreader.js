@@ -107,15 +107,16 @@ $(function () {
     describe('New Feed Selection', function () {
         var firstFeed, secondFeed;
         beforeEach(function (done) {
-            loadFeed(0);
-            firstFeed = $('.feed').html();
+            loadFeed(0, function(){
+                firstFeed = $('.feed').html();
 
-            // clear lists
-            $('.entry').remove();
+                // clear list
+                $('.entry').remove();
 
-            loadFeed(2, function () {
-                secondFeed = $('.feed').html();
-                done();
+                loadFeed(2, function () {
+                    secondFeed = $('.feed').html();
+                    done();
+                });
             });
         });
 
