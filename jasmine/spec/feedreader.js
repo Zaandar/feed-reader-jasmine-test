@@ -114,7 +114,7 @@ $(function () {
             $('.entry').remove();
 
             loadFeed(2, function () {
-                secondFeed = $('.feed').html()
+                secondFeed = $('.feed').html();
                 done();
             });
         });
