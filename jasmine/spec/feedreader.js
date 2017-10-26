@@ -69,25 +69,23 @@ $(function () {
          * clicked and does it hide when clicked again.
          */
         it('menu changes visibility', function () {
-            var menu = $('.icon-list');
+            var menu = $('.menu-icon-link');
             var body = $('body');
 
             expect(menu).toBeDefined();
             expect(body).toBeDefined();
 
-            menu.trigger('click');
+            menu.click();
             expect(body.hasClass('menu-hidden')).toBe(false);
 
-            menu.trigger('click');
+            menu.click();
             expect(body.hasClass('menu-hidden')).toBe(true);
         });
     });
 
     describe('Initial Entries', function () {
         beforeEach(function (done) {
-            loadFeed(1, function () {
-                done();
-            });
+            loadFeed(1, done);
         });
 
         /* A test that ensures when the loadFeed
@@ -97,25 +95,26 @@ $(function () {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         it('feed is loaded', function () {
-            expect($('.entry').length).toBeGreaterThan(0);
+            expect($('.feed .entry').length).toBeGreaterThan(0);
         });
 
-        // clean up
-        $('.entry').remove();
-
+        afterEach(function () {
+            // clean up
+            $('.entry').remove();
+        });
     });
 
     describe('New Feed Selection', function () {
         var firstFeed, secondFeed;
         beforeEach(function (done) {
             loadFeed(0);
-            firstFeed = $('.entry').find('h2').text();
+            firstFeed = $('.feed').html();
 
             // clear lists
             $('.entry').remove();
 
             loadFeed(2, function () {
-                secondFeed = $('.entry').find('h2').text();
+                secondFeed = $('.feed').html()
                 done();
             });
         });
@@ -128,6 +127,11 @@ $(function () {
             expect(firstFeed).toBeDefined();
             expect(secondFeed).toBeDefined();
             expect(firstFeed).not.toEqual(secondFeed);
+        });
+
+        afterEach(function () {
+            // clean up
+            $('.entry').remove();
         });
     });
 });
